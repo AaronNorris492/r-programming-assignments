@@ -1,0 +1,55 @@
+
+
+# Load dataset
+data("mtcars")
+
+# Show first few rows
+head(mtcars)
+
+# Show structure
+str(mtcars)
+
+
+# Apply common generic functions
+
+print(mtcars)
+
+summary(mtcars)
+
+plot(mtcars$mpg, mtcars$hp,
+     main = "MPG vs Horsepower",
+     xlab = "Miles per Gallon",
+     ylab = "Horsepower")
+
+
+
+# Create S3 object
+s3_obj <- list(name = "Procyon", distance = 11.46, magnitude = 0.46)
+class(s3_obj) <- "star_s3"
+
+# Define S3 print method
+print.star_s3 <- function(x) {
+  cat("Star:", x$name, "\nDistance:", x$distance, "\nMagnitude:", x$magnitude, "\n")
+}
+
+
+print(s3_obj)
+
+
+
+
+# Define S4 class
+setClass("star_s4",
+         slots = c(name = "character", distance = "numeric", magnitude = "numeric"))
+
+# Create S4 object
+s4_obj <- new("star_s4", name = "Gomeisa", distance = 161.71, magnitude = 2.84)
+
+# Define show() method for S4 class
+setMethod("show", "star_s4", function(object) {
+  cat("Star:", object@name, "\nDistance:", object@distance, "\nMagnitude:", object@magnitude, "\n")
+})
+
+# Display
+s4_obj
+
