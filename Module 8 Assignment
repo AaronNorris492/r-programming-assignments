@@ -1,10 +1,10 @@
 library(plyr)
 
-student6 <- read.table(file.choose(), header = TRUE, sep = ",", stringsAsFactors = FALSE)
-str(student6)
+grades_data <- read.table(file.choose(), header = TRUE, sep = ",", stringsAsFactors = FALSE)
+str(grades_data)
 
 gender_mean <- ddply(
-  student6,
+  grades_data,
   "Sex",
   summarise,
   GradeAverage = mean(Grade, na.rm = TRUE)
@@ -20,7 +20,7 @@ write.table(
 )
 
 i_students <- subset(
-  student6,
+  grades_data,
   grepl("i", Name, ignore.case = TRUE)
 )
 
