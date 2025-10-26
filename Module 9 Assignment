@@ -1,0 +1,44 @@
+# install.packages("dslabs")
+data("stars", package = "dslabs")
+head(stars)
+
+# Scatter plot
+plot(stars$temp, stars$magnitude,
+     main   = "Base: Temp vs. Magnitude",
+     xlab   = "Temp",
+     ylab   = "Magnitude")
+
+# Histogram
+hist(stars$temp,
+     main   = "Base: Distribution of Temp",
+     xlab   = "Temp")
+
+
+# install.packages("lattice")
+library(lattice)
+
+# Conditional scatter plot (small multiples)
+xyplot(magnitude ~ temp | factor(type),
+       data = stars,
+       main = "Lattice: Temp vs. Magnitude by Type")
+
+# Box-and-whisker plot
+bwplot(temp ~ factor(type),
+       data = stars,
+       main = "Lattice: Temp by Type")
+
+
+library(ggplot2)
+
+# Scatter plot with smoothing
+ggplot(stars, aes(x = temp, y = magnitude, color = factor(type))) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = "ggplot2: Magnitude vs. Temp with trend by group")
+
+# Faceted histogram
+ggplot(stars, aes(magnitude)) +
+  geom_histogram(binwidth = 1) +
+  facet_wrap(~ type) +
+  labs(title = "ggplot2: Magnitude distribution by category")
+
