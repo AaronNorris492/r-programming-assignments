@@ -1,0 +1,52 @@
+---
+title: "My R Markdown Primer"
+author: "Aaron Norris"
+date: "2025-11-16"
+output: html_document
+---
+
+
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+library(ggplot2)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r}
+ggplot(mtcars, aes(x = hp, y = mpg)) +
+  geom_point() +
+  theme_classic() +
+  labs(title = "Horsepower vs MPG", x = "Horsepower", y = "Miles per Gallon")
+
+```
+
+## Inline Expressions
+
+Finally inline expressions can be written  like this:
+
+This theorem was written by our good friend pythagoreas $\sqrt{a^2+b^2}=c$
+
+
+
+## Markdown Analysis
+
+Using markdown compared to plain reports seems like it is a more straighforward way to et the point across especially with inline expressions since typed expressons can easily get messy with so many reresented processes like with the quadratic forumla 
+
+x=[-b + or - sqrt(b^2-4ac)]/2a 
+
+compared to 
+
+$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$
+
+While the inlline is slightly longer it can actually see the formula not as plain text.
+
